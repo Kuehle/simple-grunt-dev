@@ -1,0 +1,21 @@
+{
+  "name": "clean-grunt",
+  "description": "",
+  "main": "Gruntfile.js",
+  "authors": [
+    "-"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5"
+  }
+}
