@@ -58,7 +58,13 @@ module.exports = function(grunt) {
     // watch for filechanges and run tasks
     watch: {
       styles: {
-        files: ['app/styles/{,*/}*.scss'],
+        files: [
+          'app/styles/{,*/}*.scss',
+          'app/styles/{,*/}*.css'
+          'app/{,*/}*.js',
+          'app/{,*/}*.html',
+          'bower.json'
+        ],
         tasks: ['clean:dev', 'copy:dev',
           'copy:bowerDev', 'wiredep', 'sass:dev', 'includeSource'],
         options: {
