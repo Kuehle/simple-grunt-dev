@@ -1,7 +1,9 @@
 $font-stack:    Helvetica, sans-serif;
-$primary-color: #333;
+$primary-color: #ddd;
+$secundary-color: #333;
 
 body {
   font: 100% $font-stack;
+  background-color: $secundary-color;
   color: $primary-color;
 }

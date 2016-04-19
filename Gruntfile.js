@@ -47,7 +47,22 @@ module.exports = function(grunt) {
       server: {
         options: {
           port: 8000,
-          base: 'dev'
+          base: 'dev',
+          livereload: 35729,
+          open: true, // open default browser
+          useAvailablePort: true
+        }
+      }
+    },
+
+    // watch for filechanges and run tasks
+    watch: {
+      styles: {
+        files: ['app/styles/{,*/}*.scss'],
+        tasks: ['clean:dev', 'copy:dev',
+          'copy:bowerDev', 'wiredep', 'sass:dev', 'includeSource'],
+        options: {
+          livereload: true,
         }
       }
     }
@@ -62,9 +77,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-include-source');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   // bundeling tasks - default is used when ’$ grunt'
   grunt.registerTask('default', ['clean:dev', 'copy:dev',
-    'copy:bowerDev', 'wiredep', 'sass:dev', 'includeSource', 'connect:server:keepalive']);
+    'copy:bowerDev', 'wiredep', 'sass:dev', 'includeSource', 'connect:server',
+    'watch:styles' ]);
 
 };
