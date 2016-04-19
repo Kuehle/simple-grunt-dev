@@ -59,18 +59,23 @@ module.exports = function(grunt) {
     watch: {
       styles: {
         files: [
-          'app/styles/{,*/}*.scss',
-          'app/styles/{,*/}*.css'
-          'app/{,*/}*.js',
-          'app/{,*/}*.html',
+          'app/styles/**/*.scss',
+          'app/styles/**/*.css',
+          'app/**/*.js',
+          'app/**/*.html',
           'bower.json'
         ],
         tasks: ['clean:dev', 'copy:dev',
-          'copy:bowerDev', 'wiredep', 'sass:dev', 'includeSource'],
+          'copy:bowerDev', 'wiredep', 'sass:dev', 'includeSource', 'jshint'],
         options: {
           livereload: true,
         }
       }
+    },
+
+    // looking for js errors
+    jshint: {
+      all: ['Gruntfile.js', 'dev/scripts/**/*.js']
     }
 
 
@@ -84,10 +89,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-include-source');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // bundeling tasks - default is used when ’$ grunt'
-  grunt.registerTask('default', ['clean:dev', 'copy:dev',
-    'copy:bowerDev', 'wiredep', 'sass:dev', 'includeSource', 'connect:server',
+  grunt.registerTask('default', 'dev');
+  grunt.registerTask('dev', ['clean:dev', 'copy:dev',
+    'copy:bowerDev', 'wiredep', 'sass:dev', 'includeSource', 'jshint', 'connect:server',
     'watch:styles' ]);
+
 
 };
