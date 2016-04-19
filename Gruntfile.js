@@ -40,7 +40,18 @@ module.exports = function(grunt) {
           'dev/index.html': 'dev/index.html'
         }
       }
+    },
+
+    // start webserver
+    connect: {
+      server: {
+        options: {
+          port: 8000,
+          base: 'dev'
+        }
+      }
     }
+
 
   });
 
@@ -50,9 +61,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-wiredep');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-include-source');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   // bundeling tasks - default is used when ’$ grunt'
   grunt.registerTask('default', ['clean:dev', 'copy:dev',
-    'copy:bowerDev', 'wiredep', 'sass:dev', 'includeSource']);
+    'copy:bowerDev', 'wiredep', 'sass:dev', 'includeSource', 'connect:server:keepalive']);
 
 };
