@@ -4,11 +4,17 @@ Providing a simple skelleton for grunt dev tasks
 ## How to run
 #### install dependencies
 With all global dependencies installed, simply do: 
-'npm install'
-'bower install'
+
+`npm install`
+
+`bower install`
+
 #### run grunt
+
 To start developer mode:
-'grunt dev'
+
+`grunt dev`
+
 ## Features
 - creates a new dev folder
 - copies structure from app
